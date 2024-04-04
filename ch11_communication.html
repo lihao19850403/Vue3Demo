@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ch11：组件间传递数据</title>
+		<script src="js/v3.2.8/vue.global.prod.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app">
+			<parent></parent>
+		</div>
+		<script>
+			const vm = Vue.createApp({
+				data() {
+					return {
+						
+					};
+				},
+				components: {
+					parent: {
+						data: function() {
+						    return {
+							    name: "待接收",
+								price: "待接收",
+								num: "待接收"	
+							};
+						},
+						methods: {
+							childData: function(info) {
+								console.log("接收到了事件参数：" + JSON.stringify(info));
+								this.name = info.name;
+								this.price = info.price;
+								this.num = info.num;
+							}
+						},
+						template:`
+							<div>
+							    <h3>父容器监听data事件，并用childData函数作为事件被接收时候的回调。</h3>
+								<child @data="childData"></child>
+								<ul>
+									<li>名称：{{name}}</li>
+									<li>单价：{{price}}</li>
+									<li>数量：{{num}}</li>
+								</ul>
+							</div>
+						`
+					},
+				},
+			});
+			vm.component("child", {
+				data: function() {
+					return {
+					    info: {
+							name: "哈密瓜",
+							price: "8.66",
+							num: "2600公斤"
+						}	
+					};
+				},
+				methods: {
+					handleClick: function() {
+						// 单击时候发送如下事件：名称是data，值是info对象。
+						this.$emit("data", this.info);
+					}
+				},
+				template: `
+				    <button @click="handleClick()">显示子组件的数据</button>
+				`
+			});
+			vm.mount("#app");
+		</script>
+	</body>
+</html>
