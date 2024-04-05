@@ -2,80 +2,99 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>ch11：组件及prop属性的使用</title>
+		<title>ch11：slot</title>
 		<script src="js/v3.2.8/vue.global.prod.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body>
 		<div id="app">
-			<h3>普通组件：</h3>
-			<blog-content style="background-color: yellow;" :data-title="content"></blog-content>
-			<h3>组件间传递值：</h3>
-			<wrap-content></wrap-content>
-			<h3>组件有多个属性并进行属性验证：</h3>
-			<my-component :name="'苹果'" :price="2.86" :num="2800"></my-component>
+			<h3>带有插槽的自定义组件：</h3>
+			<page1>提交</page1><br />
+			<h3>带有多个插槽位置的自定义组件：</h3>
+			<page-layout>
+				<template #header>
+					<h2 align="center">书河上亭壁</h2>
+				</template>
+				<template #footer>
+					<p align="right">经典古诗</p>
+				</template>
+				<!-- 此处必须标记slot是main部分，因为自定义组件中全是带有name的插槽，已经没有默认值是default的插槽了，如果不标记slot的位置，那么最终下面这个模板将会无法被找到。 -->
+				<template #main>
+					<h3>岸阔樯稀波渺茫，独凭危槛思何长。</h3>
+					<h3>萧萧远树疏林外，一半秋山带夕阳。</h3>
+				</template>
+			</page-layout>
+			<h3>父容器访问插槽内的数据（子容器插槽通过v-bind:values向外公开数据）：</h3>
+			<inner-slot>
+				<template #default="slotProps">{{slotProps.values.name}}</template>
+			</inner-slot>
+			<h3>父容器对子容器插槽数据进行解构：</h3>
+			<page2>
+				<template #default="{values: info}">{{info.firstContent}}<br />{{info.secondContent}}</template>
+			</page2>
 		</div>
 		<script>
 			const vm = Vue.createApp({
 				data() {
 					return {
-						content: "玉瘦檀轻无限恨，南楼羌管休吹。"
+						
 					};
 				},
 				components: {
-					blogContent: {
-						props: [
-							'dataTitle'
-						],
-						template: "<h3>{{dataTitle}}</h3>",
-						created: function() {
-							console.log("组件已创建：" + this.dataTitle)
-						}
-					},
-					wrapContent: {
-						data() {
-							return {
-								title: "明朝准你南轩望，洗出庐山万丈青。"
-							};
-						},
+					page1: {
 						template: `
-						    <div style='background-color: yellow;'>
-							    <h3>容器</h3>
-							    <blog-title v-bind:data-title="title"></blog-title>
+							<button type="submit">
+								<slot>Submit</slot>
+							</button>
+						`
+					},
+					pageLayout: {
+						template: `
+							<div>
+								<header>
+									<slot name="header"></slot>
+								</header>
+								<main>
+									<!-- 如果不写name属性，默认是default。 -->
+									<slot name="main"></slot>
+								</main>
+								<footer>
+									<slot name="footer"></slot>
+								</footer>
 							</div>
 						`
 					},
-					myComponent: {
-						props: {
-							name: {
-								type: String,
-								default: "待定"
-							},
-							price: {
-								type: Number,
-								default: 0
-							},
-							num: {
-								type: Number,
-								default: 0
-							}
+					innerSlot: {
+						data: function() {
+							return {
+								info: {
+									name: "苹果",
+									price: 8.86,
+									city: "深圳"
+								}
+							};
 						},
 						template: `
-						    <ul>
-							    <li>商品名：{{name}}</li>
-								<li>单价：{{price}}元</li>
-								<li>购买数量：{{num}}公斤</li>
-							</ul>
+							<button>
+								<slot :values="info">{{info.city}}</slot>
+							</button>
+						`
+					},
+					page2: {
+						data: function() {
+							return {
+								verse: {
+									firstContent: "此心随去马，迢递过千峰。",
+									secondContent: "野渡波摇月，空城雨翳钟。"
+								}
+							};
+						},
+						template: `
+							<span>
+								<slot :values="verse"></slot>
+							</span>
 						`
 					}
 				}
-			});
-			vm.component("blog-title", {
-				props: [
-					'dataTitle'
-				],
-				template: `
-				    <h3>{{dataTitle}}</h3>
-				`
 			});
 			vm.mount("#app");
 		</script>
