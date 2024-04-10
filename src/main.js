@@ -7,9 +7,12 @@ import RouterBase from "./routers/router_base.js";
 import RouterFrame from "./routers/router_frame.js";
 import RouterParams from "./routers/router_params.js";
 
+/* 所有目录。 */
+import CONTENTS from "../src/routers/contents.js"
+
 const Router = VueRouter.createRouter({
 	history: VueRouter.createWebHashHistory(),
-	routes: [...RouterBase, ...RouterFrame, ...RouterParams]
+	routes: [...RouterBase, ...RouterFrame, ...RouterParams, ...CONTENTS.toRouters]
 });
 
 const app = createApp(App);
