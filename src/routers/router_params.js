@@ -1,6 +1,3 @@
-import Vue from "vue";
-import * as VueRouter from "vue-router";
-
 const sidebarTemplate = `
 <div>
 	<ul>

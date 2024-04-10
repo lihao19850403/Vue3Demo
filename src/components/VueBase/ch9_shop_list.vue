@@ -23,7 +23,7 @@ export default {
 	props: {
 		ch_title: {
 			type: String,
-			default: "h9：综合案例--设计隔行变色的商品表"
+			default: "ch9：综合案例--设计隔行变色的商品表"
 		}
 	},
 	data: function() {
