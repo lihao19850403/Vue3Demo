@@ -2,6 +2,16 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import 'animate.css';
 
+import * as VueRouter from "vue-router";
+import RouterBase from "./routers/router_base.js";
+import RouterFrame from "./routers/router_frame.js";
+import RouterParams from "./routers/router_params.js";
+
+const Router = VueRouter.createRouter({
+	history: VueRouter.createWebHashHistory(),
+	routes: [...RouterBase, ...RouterFrame, ...RouterParams]
+});
+
 const app = createApp(App);
 app.component("blog-title", {
 	props: [
@@ -31,4 +41,5 @@ app.component("child", {
 	    <button @click="handleClick()">显示子组件的数据</button>
 	`
 });
+app.use(Router);
 app.mount('#app');

@@ -27,7 +27,11 @@
 // import ch12_animations from './components/VueBase/ch12_animations'
 // import ch12_list_anim from './components/VueBase/ch12_list_anim'
 // import ch12_index_increment from './components/VueBase/ch12_index_increment'
-import ch12_downpull_menu_anim from './components/VueBase/ch12_downpull_menu_anim'
+// import ch12_downpull_menu_anim from './components/VueBase/ch12_downpull_menu_anim'
+// import ch14_router_base from './components/VueBase/ch14_router_base'
+// import ch14_router_frame from './components/VueBase/ch14_router_frame'
+import ch14_router_params from './components/VueBase/ch14_router_params'
+
 
 export default {
   name: 'App',
@@ -58,7 +62,10 @@ export default {
 	// ch12_animations,
 	// ch12_list_anim,
 	// ch12_index_increment,
-	ch12_downpull_menu_anim,
+	// ch12_downpull_menu_anim,
+	// ch14_router_base,
+	// ch14_router_frame,
+	ch14_router_params
   }
 }
 </script>
@@ -101,5 +108,8 @@ export default {
   <!-- <ch12_animations></ch12_animations> -->
   <!-- <ch12_list_anim></ch12_list_anim> -->
   <!-- <ch12_index_increment></ch12_index_increment> -->
-  <ch12_downpull_menu_anim></ch12_downpull_menu_anim>
+  <!-- <ch12_downpull_menu_anim></ch12_downpull_menu_anim> -->
+  <!-- <ch14_router_base></ch14_router_base> -->
+  <!-- <ch14_router_frame></ch14_router_frame> -->
+  <ch14_router_params></ch14_router_params>
 </template>
