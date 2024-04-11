@@ -2,6 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import 'animate.css';
 
+import store from "./stores/index.js"
+
 import * as VueRouter from "vue-router";
 import RouterBase from "./routers/router_base.js";
 import RouterFrame from "./routers/router_frame.js";
@@ -44,5 +46,6 @@ app.component("child", {
 	    <button @click="handleClick()">显示子组件的数据</button>
 	`
 });
+app.use(store);
 app.use(Router);
 app.mount('#app');
