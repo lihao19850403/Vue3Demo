@@ -34,6 +34,7 @@ import ch12_downpull_menu_anim from '../components/VueBase/ch12_downpull_menu_an
 import ch14_router_base from '../components/VueBase/ch14_router_base'
 import ch14_router_frame from '../components/VueBase/ch14_router_frame'
 import ch14_router_params from '../components/VueBase/ch14_router_params'
+import ch15_axios_normal from '../components/VueBase/ch15_axios_normal'
 
 /* 目录根路径。路径格式：/contents/<大章节路径>/<小章节路径>。 */
 const CONTENTS_ROOT = "/contents";
@@ -41,7 +42,7 @@ const CONTENTS_ROOT = "/contents";
 /* 目录正文。 */
 const allInfos = [
 	// Vue3基础语法。
-	generatePart("Vue3基础语法", "vue_base", index_old, ch2_welcome, ch4_create, ch4_methods, ch4_lifecycle, ch4_cmd, ch5_cmd_normal, ch5_cmd_for, ch5_cmd_custom, ch5_cmd_downpull_menu, ch6_computed, ch7_watch, ch8_event_decorations, ch8_event_keys, ch8_event_userinfo_handler, ch9_class_style, ch9_shop_list, ch10_user_register, ch11_components, ch11_communication, ch11_slot, ch11_new_apis, ch11_project_catagory, ch12_animations, ch12_list_anim, ch12_index_increment, ch12_downpull_menu_anim, ch14_router_base, ch14_router_frame, ch14_router_params),
+	generatePart("Vue3基础语法", "vue_base", index_old, ch2_welcome, ch4_create, ch4_methods, ch4_lifecycle, ch4_cmd, ch5_cmd_normal, ch5_cmd_for, ch5_cmd_custom, ch5_cmd_downpull_menu, ch6_computed, ch7_watch, ch8_event_decorations, ch8_event_keys, ch8_event_userinfo_handler, ch9_class_style, ch9_shop_list, ch10_user_register, ch11_components, ch11_communication, ch11_slot, ch11_new_apis, ch11_project_catagory, ch12_animations, ch12_list_anim, ch12_index_increment, ch12_downpull_menu_anim, ch14_router_base, ch14_router_frame, ch14_router_params, ch15_axios_normal, ),
 	
 ];
 
