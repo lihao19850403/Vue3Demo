@@ -1,20 +1,21 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+
+/* Animate.css动画。 */
 import 'animate.css';
 
+/* Vuex全局状态机管理。 */
 import store from "./stores/index.js"
 
+/* Vue-Router路由管理。 */
 import * as VueRouter from "vue-router";
-import RouterBase from "./routers/router_base.js";
-import RouterFrame from "./routers/router_frame.js";
-import RouterParams from "./routers/router_params.js";
 
 /* 所有目录。 */
 import CONTENTS from "../src/routers/contents.js"
 
 const Router = VueRouter.createRouter({
 	history: VueRouter.createWebHashHistory(),
-	routes: [...RouterBase, ...RouterFrame, ...RouterParams, ...CONTENTS.toRouters]
+	routes: CONTENTS.toRouters
 });
 
 const app = createApp(App);

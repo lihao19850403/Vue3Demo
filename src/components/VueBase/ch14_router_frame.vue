@@ -9,19 +9,30 @@
 </template>
 
 <script>
+import RouterFrame from "../../routers/router_frame.js";
+
 export default {
 	name: 'ch14_router_frame',
 	props: {
 		ch_title: {
 			type: String,
 			default: "ch14：命名视图"
+		},
+		children_router: {
+			type: Array,
+			default: () => RouterFrame
 		}
 	},
 	data: function() {
 		return {
 			
 		};
-	}
+	},
+	mounted: function() {
+		this.$router.replace({
+			name: "base_frame"
+		});
+	},
 }
 </script>
 

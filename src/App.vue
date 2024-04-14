@@ -5,7 +5,7 @@ export default {
 	name: 'App',
 	mounted: function() {
 		this.$router.push({
-			path: CONTENTS.toRouters[0].path,
+			name: "app_home_page"
 		});
 	},
 }

@@ -4,7 +4,8 @@ const main = { template: `<div>正文部分</div>` };
 
 const RouterFrame = [
 	{ 
-		path: "/", 
+		path: "/base/frame", 
+		name: "base_frame",
 		components: {
 			default: header,
 			sidebar: sidebar,

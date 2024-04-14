@@ -95,15 +95,22 @@ function generatePart(thisPartName, thisPartPath, ...thisChapters) {
 function transToRouters() {
 	let routers = [];
 	routers.push({
-		path: CONTENTS_ROOT + "/" + contents_page.name,
+		path: "/",
+		name: "app_home_page",
 		component: contents_page
 	});
 	for (let part of allInfos) {
 		for (let chapter of part.chapters) {
-			routers.push({
+			let router = {
 				path: chapter.path,
-				component: chapter.component
-			});
+				component: chapter.component,
+			};
+			// 检测并导入子组件的嵌套路由。
+			if (chapter.component.props.children_router) {
+				let childrenRouters = chapter.component.props.children_router.default();
+				router["children"] = childrenRouters;
+			}
+			routers.push(router);
 		}
 	}
 	return routers;

@@ -67,7 +67,7 @@ const form = {
 	methods: {
 		submit: function() {
 			this.$router.push({
-				name: "info",
+				name: "base_params_info",
 				params: {
 					email: this.email,
 					password: this.password
@@ -80,7 +80,8 @@ const info = { template: infoTemplate };
 
 const RouterParams = [
 	{ 
-		path: "/", 
+		path: "/base/params",
+		name: "base_params",
 		components: {
 			default: header,
 			sidebar: sidebar,
@@ -89,16 +90,17 @@ const RouterParams = [
 		children: [
 			{
 				path: "",
-				redirect: "form"
+				name: "form",
+				redirect: { name: "base_params_form" }
 			},
 			{
 				path: "form",
-				name: "form",
+				name: "base_params_form",
 				component: form
 			},
 			{
 				path: "info/:email/:password",
-				name: "info",
+				name: "base_params_info",
 				component: info
 			}
 		],
