@@ -1,24 +1,16 @@
-# vue3demo
+# Vue3Demo
 
-## Project setup
+## 更新依赖项：
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动测试版应用：
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包生产环境：
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
