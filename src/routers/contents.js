@@ -3,6 +3,9 @@ import Vue from "vue";
 import * as VueRouter from "vue-router";
 import contents_page from "../components/contents.vue";
 
+/* Html5基础内容。 */
+import h5_ch1_welcome from '../components/H5Base/h5_ch1_welcome'
+
 /* Vue3基础语法。 */
 import index_old from '../components/VueBase/index_old'
 import ch2_welcome from '../components/VueBase/ch2_welcome.vue'
@@ -42,6 +45,8 @@ const CONTENTS_ROOT = "/contents";
 
 /* 目录正文。 */
 const allInfos = [
+	// Html5基础内容。
+	generatePart("Html5基础内容", "html5_base", h5_ch1_welcome),
 	// Vue3基础语法。
 	generatePart("Vue3基础语法", "vue_base", index_old, ch2_welcome, ch4_create, ch4_methods, ch4_lifecycle, ch4_cmd, ch5_cmd_normal, ch5_cmd_for, ch5_cmd_custom, ch5_cmd_downpull_menu, ch6_computed, ch7_watch, ch8_event_decorations, ch8_event_keys, ch8_event_userinfo_handler, ch9_class_style, ch9_shop_list, ch10_user_register, ch11_components, ch11_communication, ch11_slot, ch11_new_apis, ch11_project_catagory, ch12_animations, ch12_list_anim, ch12_index_increment, ch12_downpull_menu_anim, ch14_router_base, ch14_router_frame, ch14_router_params, ch15_axios_normal, ch16_vuex_normal),
 	
