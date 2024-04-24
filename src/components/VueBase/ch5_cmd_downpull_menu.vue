@@ -1,12 +1,14 @@
 <template>
-	<li v-for="(menu, index) in menus" @mouseover="menu.show=!menu.show" @mouseout="menu.show=!menu.show" :key="index">
-		<a :href="menu.url">{{menu.name}}</a>
-		<ul v-show="menu.show">
-			<li v-for="(subMenu, index) in menu.subMenus" :key="index">
-				<a :href="subMenu.url">{{subMenu.name}}</a>
-			</li>
-		</ul>
-	</li>
+	<div>
+		<li v-for="(menu, index) in menus" @mouseover="menu.show=!menu.show" @mouseout="menu.show=!menu.show" :key="index">
+			<a :href="menu.url">{{menu.name}}</a>
+			<div v-show="menu.show">
+				<template v-for="(subMenu, index) in menu.subMenus" :key="index">
+					<a :href="subMenu.url">{{subMenu.name}}</a>
+				</template>
+			</div>
+		</li>
+	</div>
 </template>
 
 <script>
@@ -23,41 +25,41 @@ export default {
 			menus: [
 				{
 					name: "在线课程", 
-					url: "#", 
+					url: "", 
 					show: false, 
 					subMenus: [
-						{ name: "Python课程", url: "#" },
-						{ name: "Java课程", url: "#" },
-						{ name: "前端课程", url: "#" }
+						{ name: "Python课程", url: "javascript:alert('Python课程')" },
+						{ name: "Java课程", url: "javascript:alert('Java课程')" },
+						{ name: "前端课程", url: "javascript:alert('前端课程')" }
 					]
 				},
 				{
 					name: "经典图书", 
-					url: "#", 
+					url: "", 
 					show: false, 
 					subMenus: [
-						{ name: "Python图书", url: "#" },
-						{ name: "Java图书", url: "#" },
-						{ name: "前端图书", url: "#" }
+						{ name: "Python图书", url: "javascript:alert('Python图书')" },
+						{ name: "Java图书", url: "javascript:alert('Java图书')" },
+						{ name: "前端图书", url: "javascript:alert('前端图书')" }
 					]
 				},
 				{
 					name: "技术支持", 
-					url: "#", 
+					url: "", 
 					show: false, 
 					subMenus: [
-						{ name: "Python技术支持", url: "#" },
-						{ name: "Java技术支持", url: "#" },
-						{ name: "前端技术支持", url: "#" }
+						{ name: "Python技术支持", url: "javascript:alert('Python技术支持')" },
+						{ name: "Java技术支持", url: "javascript:alert('Java技术支持')" },
+						{ name: "前端技术支持", url: "javascript:alert('前端技术支持')" }
 					]
 				},
 				{
 					name: "关于我们", 
-					url: "#", 
+					url: "", 
 					show: false, 
 					subMenus: [
-						{ name: "团队介绍", url: "#" },
-						{ name: "联系我们", url: "#" }
+						{ name: "团队介绍", url: "javascript:alert('团队介绍')" },
+						{ name: "联系我们", url: "javascript:alert('联系我们')" }
 					]
 				}
 			],
@@ -67,9 +69,16 @@ export default {
 </script>
 
 <style scoped>
+div {
+	display: flex;
+	width: 480px;
+	overflow: scroll;
+	margin-left: -8px;
+	margin-right: -8px;
+}
 a {
-	text-decoration: none;
 	display: block;
+	text-decoration: none;
 	color: #FFF;
 	width: 120px;
 	height: 40px;
@@ -77,25 +86,23 @@ a {
 	border: 1px solid #FFF;
 	border-width: 1px 1px 0 0;
 	background: #5D478B;
+	box-sizing: border-box;
 }
 li {
 	list-style-type: none;
-}
-#app > li {
-	list-style-type: none;
-	float: left;
 	text-align: center;
-	position: relative;
 }
-#app li a:hover {
+li a:hover {
 	color: #FFF;
 	background: #FF8C69;
 }
-#app li ul {
-	position: absolute;
-	left: -40px;
-	margin-top: 1px;
-	top: 40px;
+li div {
+	display: flex;
+	flex-direction: column;
+	width: 120px;
+	margin-top: 0;
+	margin-left: 0;
+	margin-right: 0;
 	font-size: 12px;
 }
 [v-cloak] {
