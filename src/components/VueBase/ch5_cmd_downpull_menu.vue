@@ -73,8 +73,6 @@ div {
 	display: flex;
 	width: 480px;
 	overflow: scroll;
-	margin-left: -8px;
-	margin-right: -8px;
 }
 a {
 	display: block;
@@ -101,8 +99,6 @@ li div {
 	flex-direction: column;
 	width: 120px;
 	margin-top: 0;
-	margin-left: 0;
-	margin-right: 0;
 	font-size: 12px;
 }
 [v-cloak] {

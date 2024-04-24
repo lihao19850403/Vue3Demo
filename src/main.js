@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
+/* normalize.css默认样式。 */
+import "normalize.css"
+
 /* Animate.css动画。 */
 import 'animate.css';
 

@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style scope>
-	.body {
-		text-align: left;
-	}
+.body {
+	text-align: left;
+}
 </style>
